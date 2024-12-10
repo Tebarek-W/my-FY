@@ -7,6 +7,7 @@ import { ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import { useEffect } from 'react';
 import SummaryApi from './common';
+import Context from './context';
 
 function App() {
 
@@ -24,10 +25,16 @@ function App() {
     /**user details */
     fetchUserDetails()
 
-
   },[])
   return (
     <>
+
+    <Context.Provider value={{
+
+      fetchUserDetails // user detail fetch
+
+    }}>
+
     <ToastContainer />
     
     <Header/>
@@ -35,6 +42,7 @@ function App() {
       <Outlet/>
     </main>
     <Footer/>
+    </Context.Provider>
     </>
   );
 }
